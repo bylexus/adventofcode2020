@@ -20,3 +20,11 @@ First outcome: a lib with:
 * `fn readfile(file, sep)`: reads a file, returns a list with its lines, or a split version of a line.
 
 
+### Day 01 - Report Repair
+
+As always, that one was easy - double loop through some list and find some that match a criteria -
+nice for setting all things up and to get warm.
+
+Just used a O(n^2) / O(n^3) loop structure, which didn't need optimization, as the list was short enough:
+
+Solution 1 took 2.5ms, Solution 2 took 87ms with python 3 on my MacBook Pro 2014.
