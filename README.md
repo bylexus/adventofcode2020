@@ -28,3 +28,21 @@ nice for setting all things up and to get warm.
 Just used a O(n^2) / O(n^3) loop structure, which didn't need optimization, as the list was short enough:
 
 Solution 1 took 2.5ms, Solution 2 took 87ms with python 3 on my MacBook Pro 2014.
+
+### Day 02 - Password Philosophy
+
+A simple string count / regex excercise. One nice thing I learned with python today:
+
+- it's super-simple to count nr of chars / substrings in a string: `str.count(substr)`
+- working with grouped regex also is extremely simple:
+```python
+import re
+# find format: '(nr)-(nr) (char): (*)'
+# matches something like: 1-3 a: abcde
+m = re.compile("(\d+)-(\d+)\s+(.):\s+(.*)")
+g = m.match(str)
+if g:
+    group1 = g.group(1)
+```
+
+So python makes things really simple

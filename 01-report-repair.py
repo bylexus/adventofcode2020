@@ -13,6 +13,7 @@ def problem1():
             innr = numbers[inner]
             if outnr + innr == 2020:
                 prod = outnr * innr
+                print("Numbers: {} and {}".format(outnr, innr))
                 break
 
     print("Solution 1: The product is {}".format(prod))
@@ -26,6 +27,7 @@ def prod():
             for k in range(j+1, len(numbers)):
                 n3 = numbers[k]
                 if n1 + n2 + n3 == 2020:
+                    print("Numbers: {}, {} and {}".format(n1, n2, n3))
                     return n1 * n2 * n3
 
 
