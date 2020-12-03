@@ -46,3 +46,10 @@ if g:
 ```
 
 So python makes things really simple
+
+
+### Day 03 - Toboggan Trajectory
+
+A modulo exercise - move within a wrapping plane (a cylinder, if you want), and count
+occurences of values. Trivial finger-excercise :-)
+
