@@ -53,3 +53,20 @@ So python makes things really simple
 A modulo exercise - move within a wrapping plane (a cylinder, if you want), and count
 occurences of values. Trivial finger-excercise :-)
 
+
+### Day 04 - Passport Processing
+
+This day was all about string parsing / matching:
+
+* Split entries by newline separator (as in http header/body, e.g.)
+* split single entry into key/value
+* match entries against a set of rules
+
+... and some book-keeping of all the matched rules. This excercise was simple in the end, but required a bit of typing / exact rule definition.
+
+What I learned in python today:
+
+* check if an array is contained in another array: `set(small_arr).issubset(set(large_arr))` --> Attention: this checks only for unique entries (e.g. in `[1,1,2,3,3,3,4]` it only checks if `1,2,3,4` is present)
+* check if value is in array/set: `x in arr`
+* pattern matching / regular expression matching, the simple way:
+  just check if a string matches a pattern: `re.match(r"pattern", string)`
