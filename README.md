@@ -99,8 +99,18 @@ generate full list.
 
 speed gain: again - a lot: runs in 36ms now.
 
+==> **Third Iteration**: Ah, crap! there is a MUCH SIMPLER solution for this problem: There is no need to create full ticket lists, calculate its ids etc...
+
+Just look for a gap in the already taken ID list (sort id list, check for a distance of 2), then the missing ID is already there....
+
+With this approach, it took 30ms in total...
+
 
 I learned in python:
 
 * diff 2 lists is super-easy: `list(set(list1) - set(list2))`
 * create full combinations of a set of chars, here: (0,1) for length 10: `itertools.product([0,1], repeat = 10)`
+
+I learned in general:
+
+Think twice!

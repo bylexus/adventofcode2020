@@ -100,26 +100,11 @@ def problem1():
 
 
 def problem2():
-    # generate a list from 0000000000 - 1111111111:
-    rows = [list_to_str(l) for l in itertools.product(['F', 'B'], repeat=7)]
-    cols = [list_to_str(l) for l in itertools.product(['L', 'R'], repeat=3)]
-    all_tickets = [list_to_str(l) for l in itertools.product(rows, cols)]
-
-    available_tickets = globals['lines']
-
-    # diff: all tix - available_tix = missing tix:
-    missing = set(all_tickets) - set(available_tickets)
-
-    # loop through all missing tickets, and find one that HAS a ticket id + 1 / - 1 in the orig list:
+    ids = sorted(globals['seat_ids'])
     solution = 0
-    for m in missing:
-        my_row = seat_row(m)
-        my_col = seat_col(m)
-        my_id = seat_id(my_row, my_col)
-
-        if my_id - 1 in globals['seat_ids'] and my_id + 1 in globals['seat_ids']:
-            solution = my_id
-            break
+    for i in range(0,len(ids)-1):
+        if ids[i+1] - ids[i] == 2:
+            solution = ids[i] + 1
 
     print("Solution 2: Solution: {}".format(solution))
 
