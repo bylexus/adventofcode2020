@@ -70,3 +70,22 @@ What I learned in python today:
 * check if value is in array/set: `x in arr`
 * pattern matching / regular expression matching, the simple way:
   just check if a string matches a pattern: `re.match(r"pattern", string)`
+
+### Day 05 - Binary Boarding
+
+Solution 1 was all about bisect - I converted the input ticket strings into int arrays (e.g. `FFBBBFFLRL` became `[1,1,0,0,0,1,1,1,0,1]` ), then to find the
+row / col was just a bisect in a number range - aka binary search in the number range. So far, so simple.
+
+For the 2nd part, we had to find one missing ticket by 1) find the set of missing
+tickets from all possible tickets (that is, from the set from `0000000000` to `1111111111`). This is where things got ugly:
+
+I created both sets as string representations, diffed the two sets to get the missing entries, then converted them back to int arrays to calc the ticket ids.
+
+all in all it took only about 100ms, but sill... somehow there has to be a
+better, more numeric solution than to diff strings...
+
+
+I learned in python:
+
+* diff 2 lists is super-easy: `list(set(list1) - set(list2))`
+* create full combinations of a set of chars, here: (0,1) for length 10: `itertools.product([0,1], repeat = 10)`
