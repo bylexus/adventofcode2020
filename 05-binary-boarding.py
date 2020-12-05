@@ -32,7 +32,7 @@ def bisect(input, nr):
 
 
 def read_input():
-    return list(filter(len, lib.readfile('inputs/05-input.txt')))
+    return lib.remove_empty(lib.readfile('inputs/05-input.txt'))
 
 
 def list_to_str(lst):

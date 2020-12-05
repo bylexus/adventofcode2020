@@ -14,3 +14,6 @@ def readfile(file, separator = None):
                 line = line.split(separator)
             lines.append(line)
     return lines
+
+def remove_empty(lst):
+    return list(filter(None, lst))
