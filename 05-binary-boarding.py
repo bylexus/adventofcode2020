@@ -14,14 +14,15 @@ globals = dict({
 
 def bisect(input, nr):
     """
-    input is a string with numbers - parse it to an int list first
+    input is a string with chars, representing upper/lower bound directions - 
+    F / L means: half upper bound
+    B / R means: half lower bound
     """
     min = 0
     max = nr
     res = 0
-    input = map(int, input)
     for i in input:
-        if i == 0:
+        if i in ['B', 'R']:
             min = ceil((min + max) / 2)
             res = min
         else:
@@ -30,21 +31,8 @@ def bisect(input, nr):
     return res
 
 
-def convert_input_line(input_line):
-    return input_line.replace('F', '1').replace(
-        'B', '0').replace('L', '1').replace('R', '0')
-
-
 def read_input():
-    # input comes as binary texts: F/B, R/L. So first thing to do:
-    # create a number string out of it: '0011001011'
-    lines = list(filter(lambda l: len(l) > 1,
-                        lib.readfile('inputs/05-input.txt')))
-    res = list()
-    for l in lines:
-        res.append(convert_input_line(l))
-
-    return res
+    return list(filter(len, lib.readfile('inputs/05-input.txt')))
 
 
 def list_to_str(lst):
@@ -113,8 +101,9 @@ def problem1():
 
 def problem2():
     # generate a list from 0000000000 - 1111111111:
-    all_tickets = [list_to_str(l)
-                   for l in itertools.product(['0', '1'], repeat=10)]
+    rows = [list_to_str(l) for l in itertools.product(['F', 'B'], repeat=7)]
+    cols = [list_to_str(l) for l in itertools.product(['L', 'R'], repeat=3)]
+    all_tickets = [list_to_str(l) for l in itertools.product(rows, cols)]
 
     available_tickets = globals['lines']
 

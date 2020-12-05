@@ -84,13 +84,20 @@ I created both sets as string representations, diffed the two sets to get the mi
 all in all it took only about 100ms, but sill... somehow there has to be a
 better, more numeric solution than to diff strings...
 
-==> I found a more elegant solution now:
+==> **First Iteration**: I found a more elegant solution now:
 
 I did not convert the input into int arrays, but only replaced the chars with
 number strings - (e.g. `FFBBBFFLRL` became `1100011101` ). This way I didn't
 have to convert it from/to int arrays.
 
 It became much faster through this - both solutions together take only 66ms now.
+
+==> **Second Iteration**: I now do NOT convert the strings - I just use the
+original chars - this way I don't neet to convert to ints - and I do not need
+to convert my full list, I can just use the `itertools.product` from python to 
+generate full list.
+
+speed gain: again - a lot: runs in 36ms now.
 
 
 I learned in python:
