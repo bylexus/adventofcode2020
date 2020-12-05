@@ -13,9 +13,13 @@ globals = dict({
 
 
 def bisect(input, nr):
+    """
+    input is a string with numbers - parse it to an int list first
+    """
     min = 0
     max = nr
     res = 0
+    input = map(int, input)
     for i in input:
         if i == 0:
             min = ceil((min + max) / 2)
@@ -27,14 +31,13 @@ def bisect(input, nr):
 
 
 def convert_input_line(input_line):
-    l = input_line.replace('F', '1').replace(
+    return input_line.replace('F', '1').replace(
         'B', '0').replace('L', '1').replace('R', '0')
-    return list(map(lambda i: int(i), list(l)))
 
 
 def read_input():
     # input comes as binary texts: F/B, R/L. So first thing to do:
-    # create int arrays of each line: [0,1,0,0,....]
+    # create a number string out of it: '0011001011'
     lines = list(filter(lambda l: len(l) > 1,
                         lib.readfile('inputs/05-input.txt')))
     res = list()
@@ -45,22 +48,40 @@ def read_input():
 
 
 def list_to_str(lst):
-    return "".join(map(str, lst))
+    """
+    concats all elements of a list into a string
+    e.g. [1,2,3] ==> '123'
+    """
+    return "".join(lst)
 
 
 def extract_rows(input):
+    """
+    returns the row part of the input: first 7 nrs
+    """
     return input[0:7]
 
 
 def extract_cols(input):
+    """
+    returns the col part of the input: last 3 nrs
+    """
     return input[7:]
 
 
 def seat_row(input):
+    """
+    find the seat row by bisecting within a range of 128,
+    using the row inputs as 'directions' (take upper or lower part on each bisect step)
+    """
     return bisect(extract_rows(input), 127)
 
 
 def seat_col(input):
+    """
+    find the seat row by bisecting within a range of 8
+    using the col inputs as 'directions' (take upper or lower part on each bisect step)
+    """
     return bisect(extract_cols(input), 7)
 
 
@@ -93,10 +114,9 @@ def problem1():
 def problem2():
     # generate a list from 0000000000 - 1111111111:
     all_tickets = [list_to_str(l)
-                   for l in itertools.product([0, 1], repeat=10)]
+                   for l in itertools.product(['0', '1'], repeat=10)]
 
-    # create strings from the binary values - to better diff the two sets:
-    available_tickets = [list_to_str(l) for l in globals['lines']]
+    available_tickets = globals['lines']
 
     # diff: all tix - available_tix = missing tix:
     missing = set(all_tickets) - set(available_tickets)
@@ -104,9 +124,8 @@ def problem2():
     # loop through all missing tickets, and find one that HAS a ticket id + 1 / - 1 in the orig list:
     solution = 0
     for m in missing:
-        m_list = convert_input_line(m)
-        my_row = seat_row(m_list)
-        my_col = seat_col(m_list)
+        my_row = seat_row(m)
+        my_col = seat_col(m)
         my_id = seat_id(my_row, my_col)
 
         if my_id - 1 in globals['seat_ids'] and my_id + 1 in globals['seat_ids']:
