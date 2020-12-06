@@ -114,3 +114,11 @@ I learned in python:
 I learned in general:
 
 Think twice!
+
+### Day 06 - Custom Customs
+
+All about counting groups - so a lookup table exercise - I used python's `dict()`
+and `set()` to achieve this. Form groups (keys) and count the answers either
+in sum or per member.
+
+Nothing new so far for me in python.
