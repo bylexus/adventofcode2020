@@ -122,3 +122,18 @@ and `set()` to achieve this. Form groups (keys) and count the answers either
 in sum or per member.
 
 Nothing new so far for me in python.
+
+### Day 07 - Handy Haversacks
+
+This day was about Graphs and graph travel, in this case, a directed graph
+which forced you to do loop detection:
+
+Bags ( aka Graph Nodes ) can contain other bags, which again can contain other
+bags etc. This spans a nice directed graph.
+
+
+Problem 1 + 2 both required you to travel the graph, with slighly different
+tasks. So I implemented 2 `visit()` methods which
+did the graph traversal with loop detection.
+
+The problems now become more tense, as days go by ...
