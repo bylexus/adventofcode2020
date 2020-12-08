@@ -137,3 +137,18 @@ tasks. So I implemented 2 `visit()` methods which
 did the graph traversal with loop detection.
 
 The problems now become more tense, as days go by ...
+
+
+### Day 08 - Handheld Halting
+
+I waited for such kind of problem - a mini-cpu-vm that runs simple
+assembler-like instructions - finally it's here :-)
+
+This one was simple, but took me some fiddling with memory copy/reset
+during runs. I created a CPU class that take care of the running
+and resetting of the memory for easier usage in the program itself.
+
+I **guess** this is not the last time we have to use that or a similar vm in the
+days coming...
+
+
