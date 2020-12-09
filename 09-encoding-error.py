@@ -8,6 +8,7 @@ import itertools
 
 found = 0
 
+
 def read_input():
     # input = [int(x) for x in lib.readfile('inputs/09-input-sample.txt')]
     input = [int(x) for x in lib.readfile('inputs/09-input.txt')]
@@ -22,12 +23,9 @@ def check_sum(valid_list, nr):
     True for yes, False for no :-)
     """
     valid_list = list(set(valid_list))
-
-    for i in range(0, len(valid_list)-1):
-        for j in range(i+1, len(valid_list)):
-            if (valid_list[i]+valid_list[j] == nr):
-                return True
-    return False
+    combinations = itertools.permutations(valid_list, 2)
+    sums = [a + b for (a, b) in combinations]
+    return nr in sums
 
 def problem1(input):
     global found
@@ -54,23 +52,24 @@ def find_sum(input, start_pos, check):
     begin at start_pos (and down).
     """
     total = 0
-    nrs = []
     for i in range(start_pos, len(input)):
         total += input[i]
-        nrs.append(input[i])
         if total == check:
-            return nrs
+            return input[start_pos:i+1]
+        elif total > check:
+            return False
     return False
+
 
 def problem2(input):
     global found
     res = None
     # start looking for a contiguous sum at pos 0, then 1, ....
-    for i in range(0,len(input)):
+    for i in range(0, len(input)):
         res = find_sum(input, i, found)
         if res:
             break
-        
+
     solution = min(res) + max(res)
     print("Solution 2: {}".format(solution))
 
