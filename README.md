@@ -152,3 +152,15 @@ I **guess** this is not the last time we have to use that or a similar vm in the
 days coming...
 
 
+### Day 09 - Encoding Error
+
+That one took me too long - not because it was difficult, but because of a stupid off-by-one-error... *grrrrr*
+
+That one was all about array slicing / searching.
+
+In python it is really easy to create list slices:
+
+* `a[:4]` will return a new list with the first 3 elements of the list a
+* `a[2:6]` will return a new list with the elements from index 1 to 5
+* `a[5:]` will return a new list with all elements starting at index 4 to the end of the old list
+* `a[:]` will return a shallow copy of the list

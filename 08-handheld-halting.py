@@ -53,8 +53,6 @@ class CPU:
             return False
 
 def read_input():
-    global bags
-
     # input = lib.readfile('inputs/08-input-sample.txt')
     input = lib.readfile('inputs/08-input.txt')
     m = re.compile(r"(\w+)\s+([+-]\d+)+")
