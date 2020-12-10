@@ -164,3 +164,26 @@ In python it is really easy to create list slices:
 * `a[2:6]` will return a new list with the elements from index 1 to 5
 * `a[5:]` will return a new list with all elements starting at index 4 to the end of the old list
 * `a[:]` will return a shallow copy of the list
+
+### Day 10 - Adapter Array
+
+This day was all about trees or directed graphs respectively - at least in the 2nd part.
+
+Part one was just a simple walk-through of adapters and check their
+validity / count some diffs. Simple enouth.
+
+Part two was a bit more tricky: The trick here was to see that all
+possible paths form a tree of paths. Each adapter act as a node of a sub-tree, present as node in may sub-trees (so one adapter could occur in the tree many times). One have to just
+walk the tree and count possible sub-paths recursively.
+
+But that tree was just too big to walk through for each possible path:
+so the trick was to count already walked sub-paths for each adapter (tree node): When first walked to an adpater, it count its valid sub-paths.
+The 2nd time we walked an adapter, we already know the number of sub-pahts,
+and could immediately return.
+
+So we had some kind of "inter-connected wormhole tree" :-))
+
+--> or, in other words: A directed graph, leading from the lowest adapter
+in many paths to the target device.
+ 
+
