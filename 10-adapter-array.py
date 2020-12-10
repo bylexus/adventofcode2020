@@ -8,13 +8,7 @@ import itertools
 
 
 def read_input():
-    input = []
-    for x in lib.readfile('inputs/10-input.txt'):
-    # for x in lib.readfile('inputs/10-input-sample-2.txt'):
-        if len(x.strip()):
-            input.append(int(x))
-
-    return input
+    return list(map(int, lib.remove_empty(lib.readfile('inputs/10-input.txt'))))
 
 
 def problem1(input):
@@ -37,9 +31,9 @@ def problem1(input):
             return
     diffs[3] += 1
 
-
     solution = diffs[1] * diffs[3]
     print("Solution 1: {}".format(solution))
+
 
 def walk_adapters(adapters, start, target, seen_adapters):
     """
@@ -47,7 +41,7 @@ def walk_adapters(adapters, start, target, seen_adapters):
     from the start node to the end device. The graph is traversed
     depth-first, noting the number of possible sub-paths on the
     actual node, when the depth-first traversal returns.
-    
+
     Return immediately if we know already how many valid sub-paths
     are there for an adapter.
     """
@@ -70,13 +64,14 @@ def walk_adapters(adapters, start, target, seen_adapters):
     seen_adapters[start] = valid_paths
     return valid_paths
 
+
 def problem2(input):
     """
     'Walk the graph': All possibilities span a directed graph of possible paths.
     Only paths that end to the end device (max(input)) are valid.
     So walk the graph recursively (breath-first). On each node,
     we note the valid nr of sub-paths, as returned from the depth-first traversal.
-    
+
     Then we start again, walking the non-walked paths.
 
     If we encounter a node a 2nd time (from another path), we immediately return.
@@ -99,10 +94,10 @@ def main():
     input = read_input()
 
     t1 = lib.measure(lambda: problem1(input))
-    print("Problem 1 took {:.4f}s to solve.\n\n".format(t1))
+    print("Problem 1 took {:.6f}s to solve.\n\n".format(t1))
 
     t2 = lib.measure(lambda: problem2(input))
-    print("Problem 2 took {:.4f}s to solve.".format(t2))
+    print("Problem 2 took {:.6f}s to solve.".format(t2))
 
 
 if __name__ == "__main__":

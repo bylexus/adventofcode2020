@@ -167,23 +167,30 @@ In python it is really easy to create list slices:
 
 ### Day 10 - Adapter Array
 
-This day was all about trees or directed graphs respectively - at least in the 2nd part.
+This day was all about directed graphs - at least in the 2nd part.
 
 Part one was just a simple walk-through of adapters and check their
 validity / count some diffs. Simple enouth.
 
 Part two was a bit more tricky: The trick here was to see that all
-possible paths form a tree of paths. Each adapter act as a node of a sub-tree, present as node in may sub-trees (so one adapter could occur in the tree many times). One have to just
-walk the tree and count possible sub-paths recursively.
+possible paths form a directed graph. Each adapter acts as a node of the graph, and walking from the start node 0 to the end device node is one path through the graph.
 
-But that tree was just too big to walk through for each possible path:
-so the trick was to count already walked sub-paths for each adapter (tree node): When first walked to an adpater, it count its valid sub-paths.
-The 2nd time we walked an adapter, we already know the number of sub-pahts,
-and could immediately return.
+So one just needs to create / walk all possible paths, right? Right - only
+that this approach leads to the end of the universe and back - it just runs
+forever.
 
-So we had some kind of "inter-connected wormhole tree" :-))
+So I implemented a memoization pattern here: Each node traverses all coming
+sub-paths recursively. Each sub-path recursion returns the numbers of 
+sub-paths in front of it, and this number is stored on each node.
+So each node knows how many sub-paths are possible to to forward to.
 
---> or, in other words: A directed graph, leading from the lowest adapter
-in many paths to the target device.
- 
+Once a node that already knows this number, we can immediately return
+the recursion and do not need to walk the full graph again - now 
+the whole algorithm takes only 0.000460s to find out the 
+86'812'000'000'000 and what not number of paths.... wow!
+
+Take-home advice:
+
+again, better think twice - brute force definitively did NOT the trick here,
+but a clever path traversal mechanism did.
 
