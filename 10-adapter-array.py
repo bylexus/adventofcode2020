@@ -43,8 +43,11 @@ def problem1(input):
 
 def walk_adapters(adapters, start, target, seen_adapters):
     """
-    Tree walking: span a tree, and count the valid paths,
-    remembering the valid sub-paths per adapter in seen_adapters.
+    Graph walking: The adapters form a directed graph, leading
+    from the start node to the end device. The graph is traversed
+    depth-first, noting the number of possible sub-paths on the
+    actual node, when the depth-first traversal returns.
+    
     Return immediately if we know already how many valid sub-paths
     are there for an adapter.
     """
@@ -56,7 +59,7 @@ def walk_adapters(adapters, start, target, seen_adapters):
     if target > start and target <= start + 3:
         return 1
 
-    # span the sub-tree for each possible next adapter,
+    # span the sub-graph for each possible next adapter,
     # and count the valid sub-paths
     possible_next = [start + 1, start + 2, start + 3]
     valid_paths = 0
@@ -69,12 +72,15 @@ def walk_adapters(adapters, start, target, seen_adapters):
 
 def problem2(input):
     """
-    'Walk the tree': All possibilities span a tree of possible paths.
+    'Walk the graph': All possibilities span a directed graph of possible paths.
     Only paths that end to the end device (max(input)) are valid.
-    So walk the tree recursively (breath-first). On each node,
-    we note the valid nr of sub-paths. If we encounter a node
-    a 2nd time (from another tree branch), we immediately return.
-    This way, walking the tree is muuuuuuuuuch faster than walking it
+    So walk the graph recursively (breath-first). On each node,
+    we note the valid nr of sub-paths, as returned from the depth-first traversal.
+    
+    Then we start again, walking the non-walked paths.
+
+    If we encounter a node a 2nd time (from another path), we immediately return.
+    This way, walking the graph is muuuuuuuuuch faster than walking it
     through each time for full.
     """
     adapters = sorted(input)
