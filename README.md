@@ -194,3 +194,17 @@ Take-home advice:
 again, better think twice - brute force definitively did NOT the trick here,
 but a clever path traversal mechanism did.
 
+### Day 11 - Seating System
+
+A Double-Buffer problem: This one needed to calculate a new 2d-array state based
+on a previous state - while the previous state must not be changed during
+the calculation of the new one. So I implemented this using a "double-buffer"
+approach:
+
+1. copy the actual state to a 2nd buffer
+2. modify the 2nd buffer based on the actual state
+3. copy the 2nd buffer back to the actual state
+4. repeat
+
+Also, it was a real pain to check in all the 8 directions - so I implemented
+a neat abstraction for that - maybe that may become handy in future problems.
