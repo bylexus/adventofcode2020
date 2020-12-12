@@ -216,3 +216,6 @@ out all the direction turns (just a mind / head problem) for problem 2: rotating
 was just a matter of swap x/y, but my head could not rotate that at 06:00AM :-)
 
 So simple in the end, but took me too long with fiddling the correct +/-/swap structure.
+
+Just for fun, I created a small Canvas animation of the 2nd part...
+well, THAT's a trip! [12-rain-risk.html](12-rain-risk.html)
