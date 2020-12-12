@@ -208,3 +208,11 @@ approach:
 
 Also, it was a real pain to check in all the 8 directions - so I implemented
 a neat abstraction for that - maybe that may become handy in future problems.
+
+### Day 12 - Rain Risk
+
+That one was simple algorithm-wise (just add up coordinates), but I had especially long to figure
+out all the direction turns (just a mind / head problem) for problem 2: rotating
+was just a matter of swap x/y, but my head could not rotate that at 06:00AM :-)
+
+So simple in the end, but took me too long with fiddling the correct +/-/swap structure.
