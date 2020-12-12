@@ -25,39 +25,34 @@ def problem1(input):
         'E': (0,1)
     }
 
-    turn_l_map = {
-        'E':'N',
-        'N':'W',
-        'W':'S',
-        'S':'E'
-    }
-
-    turn_r_map = {
-        'E':'S',
-        'S':'W',
-        'W':'N',
-        'N':'E'
-    }
-
     coord = [0,0]
-    heading = 'E'
+    # heading is a vector with max +/- 1, indicating the dir
+    heading = [0, 1]
     for i in input:
         instr = i[0]
         nr = int(i[1:])
         if instr in ['N','S','E','W']:
-            vec = heading_map[instr]
-            coord[0] += vec[0] * nr
-            coord[1] += vec[1] * nr
+            coord[0] += heading_map[instr][0] * nr
+            coord[1] += heading_map[instr][1] * nr
         elif instr == 'L':
             for r in range(0,nr // 90):
-                heading = turn_l_map[heading]
+                tmp_y = heading[0]
+                tmp_x = heading[1]
+                # x becomes y
+                heading[1] = tmp_y
+                # y becomes negative x
+                heading[0] = -tmp_x
         elif instr == 'R':
             for r in range(0,nr // 90):
-                heading = turn_r_map[heading]
+                tmp_y = heading[0]
+                tmp_x = heading[1]
+                # x becomes negative y
+                heading[1] = -tmp_y
+                # y becomes x
+                heading[0] = tmp_x
         elif instr == 'F':
-            vec = heading_map[heading]
-            coord[0] += vec[0] * nr
-            coord[1] += vec[1] * nr
+            coord[0] += heading[0] * nr
+            coord[1] += heading[1] * nr
     
     print(coord)
 
