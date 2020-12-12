@@ -15,6 +15,9 @@ def read_input():
 
 
 def problem1(input):
+    # coordinates are pairs of [y, x]:
+    # y for N/S (-1 means up north, 1 means down south)
+    # x for E/W (-1 means west, 1 means east)
     heading_map = {
         'N': (-1,0),
         'S': (1,0),
@@ -64,6 +67,9 @@ def problem1(input):
 
 
 def problem2(input):
+    # coordinates are pairs of [y, x]:
+    # y for N/S (-1 means up north, 1 means down south)
+    # x for E/W (-1 means west, 1 means east)
     heading_map = {
         'N': (-1,0),
         'S': (1,0),
@@ -77,22 +83,30 @@ def problem2(input):
         instr = i[0]
         nr = int(i[1:])
         if instr in ['N','S','E','W']:
+            # move the waypoint:
             vec = heading_map[instr]
             coord_wp[0] += vec[0] * nr
             coord_wp[1] += vec[1] * nr
         elif instr == 'L':
+            # rotate the waypoint to the left:
             for r in range(0,nr // 90):
                 tmp_y = coord_wp[0]
                 tmp_x = coord_wp[1]
+                # x becomes y
                 coord_wp[1] = tmp_y
+                # y becomes negative x
                 coord_wp[0] = -tmp_x
         elif instr == 'R':
+            # rotate the waypoint to the right:
             for r in range(0,nr // 90):
                 tmp_y = coord_wp[0]
                 tmp_x = coord_wp[1]
+                # x becomes negative y
                 coord_wp[1] = -tmp_y
+                # y becomes x
                 coord_wp[0] = tmp_x
         elif instr == 'F':
+            # forward the ship n times the waypoint vector
             coord_ship[0] += coord_wp[0] * nr
             coord_ship[1] += coord_wp[1] * nr
     
