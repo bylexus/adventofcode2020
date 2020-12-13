@@ -219,3 +219,22 @@ So simple in the end, but took me too long with fiddling the correct +/-/swap st
 
 Just for fun, I created a small Canvas animation of the 2nd part...
 well, THAT's a trip! [12-rain-risk.html](12-rain-risk.html)
+
+### Day 13 - Shuttle Search
+
+First part was a simple modulo operation - The 2nd part seem to be really hard
+at first sight.... then it came to me: During my math lessons in university,
+we had solved a similar problem - using the Chinese Modulus Theoreom:
+
+https://de.wikipedia.org/wiki/Chinesischer_Restsatz
+
+So it seems like exactly that problem - our unknown x is the start time,
+the modulus our buses (prime numbers), our remainders the "distance" to the
+needed number modulo prime.
+
+I implemented the chinese modulo theorem from here:
+
+https://www.inf.hs-flensburg.de/lang/krypto/algo/chinese-remainder.htm
+
+and it worked like a charm.
+
