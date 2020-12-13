@@ -23,7 +23,6 @@ def read_input():
     return (depart, final_buses)
 
 
-
 def problem1(input):
     depart = input[0]
     buses = input[1]
@@ -40,7 +39,6 @@ def problem1(input):
 
     solution = (min_dist - depart) * min_id
     print("Solution 1: {}".format(solution))
-
 
 
 def extgcd(a, b):
@@ -65,15 +63,16 @@ def chinesischer_restsatz(nn, rr):
     x ist dabei die erste "Abfahrtszeit", m,n unsere Inputs (Primzahlen),
       a, b die korrigierten Reste.
     """
-    if len(nn)==1:
+    if len(nn) == 1:
         return nn[0], rr[0]
     else:
-        k=len(nn)//2
-        m, a=chinesischer_restsatz(nn[:k], rr[:k])
-        n, b=chinesischer_restsatz(nn[k:], rr[k:])
-        g, u, v=extgcd(m, n)
-        x=(b-a)*u%n*m+a
+        k = len(nn)//2
+        m, a = chinesischer_restsatz(nn[:k], rr[:k])
+        n, b = chinesischer_restsatz(nn[k:], rr[k:])
+        g, u, v = extgcd(m, n)
+        x = (b-a)*u % n*m+a
         return m*n, x
+
 
 def problem2(input):
     """
@@ -85,12 +84,12 @@ def problem2(input):
 
     # Aufbereiten Modulos (die Input-Primzahlen) und der Reste
     # von bus[0] % akt_prim relativ zum verschobenen Index
-    
-    for i,x in enumerate(buses):
+
+    for i, x in enumerate(buses):
         if x == "x":
             continue
-        modulos.append(int(x))
-        reste.append(-i)
+        modulos.append(x)
+        reste.append(x-i)  # rest von 1. Zahl % x
 
     res = chinesischer_restsatz(modulos, reste)
     solution = res[1]
