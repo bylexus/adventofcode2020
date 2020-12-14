@@ -238,3 +238,20 @@ https://www.inf.hs-flensburg.de/lang/krypto/algo/chinese-remainder.htm
 
 and it worked like a charm.
 
+### Day 14 - Docking Data
+
+A bit toggling / manipulating excercise - resp. a string manipulation excercise:
+
+in python it is really simple to convert to/from int/bin/string values. In this
+problem, it was much easier to apply all the manipluations on string level.
+
+so I converted all the ints and masks to strings, manipulated them,
+and converted them back.
+
+I used the `itertools.product()` method to create all posible bit permutations
+for an arbitary bit length (e.g. length = 2 ==> 00, 01, 10, 11)
+
+Things learned in python:
+
+* int to bin str, with padding 0: `"{:036b}".format(42)` creates a 36bit binary string
+* bin to int: `int('00110100', 2)`
