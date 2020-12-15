@@ -255,3 +255,11 @@ Things learned in python:
 
 * int to bin str, with padding 0: `"{:036b}".format(42)` creates a 36bit binary string
 * bin to int: `int('00110100', 2)`
+
+## Day 15 - Rambunctious Recitation
+
+That one took me an hour, until I noticed I didn't reset a global var before
+step 1 - annoying, but learned something, again: DO NOT USE GLOBAL VARS. 
+
+Then it was simple: just book keep of numbers in a dict. But I guess there will be a much much faster solution
+if it will be optimized a bit. I give it a try later on.
