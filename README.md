@@ -263,3 +263,17 @@ step 1 - annoying, but learned something, again: DO NOT USE GLOBAL VARS.
 
 Then it was simple: just book keep of numbers in a dict. But I guess there will be a much much faster solution
 if it will be optimized a bit. I give it a try later on.
+
+## Day 16 - Ticket Translation
+
+Rule determination - the first part was not hard, just loop
+through all tickets and check for errors (rule validity).
+
+2nd part took me a while: to determine which rule belongs to
+what field, I had to loop during all fields, and find the one
+with exactly one (1) matching rule. Remove that from the rules-to-determine-list and start over, until all fields
+have an associated rule.
+
+This is more or less the famous Sherlock Holmes quote:
+
+"When you've ruled out the impossible, what remains is the truth, however improbable it is." :-)
