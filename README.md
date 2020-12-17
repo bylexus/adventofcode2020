@@ -277,3 +277,20 @@ have an associated rule.
 This is more or less the famous Sherlock Holmes quote:
 
 "When you've ruled out the impossible, what remains is the truth, however improbable it is." :-)
+
+## Day 17 - Conway Cubes
+
+An infinite-cube, state-mutation problem. My implementation
+stores all (known, already calculated) coordinates in a dictionnary,
+with the coordinate tuples as keys, and the state as value.
+
+Then I create a new dict, and calculate the new state into the new dict, so to not override while calculating.
+
+The dimensions really don't matter. The only hard part here was:
+
+* calculating all neighbours (simple with python's itertools.product:  `neighbours = list(product([0,1,-1],repeat=dims)))` calculates all permutations of the relative coordinates 0,1,-1
+* see that for all KNOWN coordinates, also the unknown neighbours
+  need to be calculated, too.
+
+Calculation is really slow, but I have some ideas how to improve,
+which I am doing later.
