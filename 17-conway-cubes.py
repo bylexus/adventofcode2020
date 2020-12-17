@@ -12,14 +12,10 @@ def read_input():
     input = list(map(list,lib.remove_empty(lib.readfile('inputs/17-input.txt'))))
     return input
 
-def calc_coord_state(coords, coord, dims = 3):
-    neighbours = list(product([0,1,-1],repeat=dims))
+def calc_coord_state(coords, coord, neighbours, dims = 3):
     state = coords.get(coord, '.')
     active_neighbours = 0
-    zero_tuple = (0,)*dims
     for nc in neighbours:
-        if nc == zero_tuple:
-            continue
         # neighbour coordinates:
         real_nc = tuple(map(operator.add, coord, nc))
         neighbour_state = coords.get(real_nc, '.')
@@ -31,19 +27,18 @@ def calc_coord_state(coords, coord, dims = 3):
         state = '#'
     return state
 
-def calc_new_state(coords, dims = 3):
-    new_state = coords.copy()
-    neighbours = list(product([0,1,-1],repeat=dims))
+def calc_new_state(coords, neighbours, dims = 3):
+    new_state = dict()
     for c,state in coords.items():
         # calc new value of act coord
-        new_state[c] = calc_coord_state(coords, c, dims)
+        new_state[c] = calc_coord_state(coords, c, neighbours, dims)
         # ... and also new value of all neighbour coords, if not
         # yet present:
         for nc in neighbours:
             # neighbour coordinates:
             real_nc = tuple(map(operator.add, c, nc))
             if not coords.get(real_nc):
-                new_state[real_nc] = calc_coord_state(coords, real_nc, dims)
+                new_state[real_nc] = calc_coord_state(coords, real_nc, neighbours, dims)
     return new_state
 
 def problem1(input):
@@ -52,13 +47,16 @@ def problem1(input):
     # value: state ('.', '#')
     # unknown coords: inactive ('.')
     coords = dict()
+    # pre-calc list of relative neighbour coords:
+    neighbours = list(product([0,1,-1],repeat=3))
+    neighbours.remove((0,0,0))
     for y,line in enumerate(input):
         for x,col in enumerate(line):
             coords[(x,y,0)] = col
 
     # do the calc cycles:
     for i in range(0, 6):
-        coords = calc_new_state(coords)
+        coords = calc_new_state(coords, neighbours, 3)
 
     # count active:
     active = 0
@@ -76,12 +74,15 @@ def problem2(input):
     # value: state ('.', '#')
     # unknown coords: inactive ('.')
     coords = dict()
+    # pre-calc list of relative neighbour coords:
+    neighbours = list(product([0,1,-1],repeat=4))
+    neighbours.remove((0,0,0,0))
     for y,line in enumerate(input):
         for x,col in enumerate(line):
             coords[(x,y,0,0)] = col
 
     for i in range(0, 6):
-        coords = calc_new_state(coords, dims=4)
+        coords = calc_new_state(coords, neighbours, dims=4)
 
     # count active:
     active = 0

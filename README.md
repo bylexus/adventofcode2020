@@ -292,5 +292,14 @@ The dimensions really don't matter. The only hard part here was:
 * see that for all KNOWN coordinates, also the unknown neighbours
   need to be calculated, too.
 
-Calculation is really slow, but I have some ideas how to improve,
+Calculation is really slow (92s for solution 2), but I have some ideas how to improve,
 which I am doing later.
+
+--
+
+After some improvements, I am down to 79s for the 2nd solution.
+This is about 15% faster than my first approach, but still slow.
+
+There is a lot of dictionnary access needed here. I guess this is
+the real speed-killer here, but at the moment I don't see how to 
+make this any faster.
