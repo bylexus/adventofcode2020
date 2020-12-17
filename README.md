@@ -303,3 +303,12 @@ This is about 15% faster than my first approach, but still slow.
 There is a lot of dictionnary access needed here. I guess this is
 the real speed-killer here, but at the moment I don't see how to 
 make this any faster.
+
+--
+
+Ah, finally, a solution I can live with... now 17s for solution 2.
+That is a 82% increase against the first attempt. Not bad.
+What did I do? Before, I just calculated all coordinates and
+all of their neighbours, even if they were already calculated.
+So now I just skipped the re-calculation of already known
+cubes - that's it.

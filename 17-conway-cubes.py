@@ -37,7 +37,7 @@ def calc_new_state(coords, neighbours, dims = 3):
         for nc in neighbours:
             # neighbour coordinates:
             real_nc = tuple(map(operator.add, c, nc))
-            if not coords.get(real_nc):
+            if not new_state.get(real_nc):
                 new_state[real_nc] = calc_coord_state(coords, real_nc, neighbours, dims)
     return new_state
 
