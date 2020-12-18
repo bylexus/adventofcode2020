@@ -312,3 +312,13 @@ What did I do? Before, I just calculated all coordinates and
 all of their neighbours, even if they were already calculated.
 So now I just skipped the re-calculation of already known
 cubes - that's it.
+
+## Day 18 - Operation Order
+
+I expected that one earlier - parsing, building an AST and evaluating. Luckily,
+the supported expressions were very simple, and building and traversing the AST was a breeze in the end.
+
+Nothing new so far for me in python, maybe some list operations, e.g. concat 2 lists is a breeze, too:
+`[1,2,3] + [4,5,6] = [1,2,3,4,5,6]`
+
+When do the real stuff begins, finally?? I fear the next days...
