@@ -322,3 +322,13 @@ Nothing new so far for me in python, maybe some list operations, e.g. concat 2 l
 `[1,2,3] + [4,5,6] = [1,2,3,4,5,6]`
 
 When do the real stuff begins, finally?? I fear the next days...
+
+## Day 19 - Monster Messages
+
+
+The first one I got stuck - Part one was solvable, I created a full list of possible strings
+by traversing the expanded tree.
+
+But for the 2nd part, things get just magnitudes too big...
+
+I don't have a solution for now, I have to investigate furter first.
