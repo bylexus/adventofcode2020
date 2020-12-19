@@ -332,3 +332,10 @@ by traversing the expanded tree.
 But for the 2nd part, things get just magnitudes too big...
 
 I don't have a solution for now, I have to investigate furter first.
+
+--
+
+2nd approach: REGEXES! I just form a complete, massive regex, recursively built from the rules.
+Works like a charm for part 1. For part 2, I manually replaced the recursive rule with the ... recursive version :-) so I did some recursion-resolving until a certain deepness (just tried it out manually how many are necessary, really).
+
+Man, that one took me almost the whole day...
