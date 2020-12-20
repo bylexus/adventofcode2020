@@ -350,3 +350,25 @@ the correct arrangement, but with some twists: checking a fit means:
 
 This one takes a bit more time, so I do not commit the final version here - this is a work in progress
 for now.
+
+--
+
+Solution 1 - Wow, that almost worked out of the box. This is the algorithm I implemented roughly:
+
+1. find a next free (not in use at the moment) tile
+2. register tile as "in use", and set it in the final tile matrix
+3. check if any of the tile's versions fits in to left / top edges:
+    - go through all tile versions
+    - check if the actual version fit to left/top
+    - if yes, start recursive backtrack on NEXT (right, bottom) tile, see if there is an arrangement that matches
+      - if yes, wow! that's it --> register which version was used
+      - if no, check next version
+    - if no match, unregister from "in use", remove from the final matrix, unregister used version, go to 1.
+4. if no matching tile could be found, unregister from "in use" and tile matrix, return a fail (backtrack)
+
+That worked like a charm. In the end, I get a tile matrix, which is **rotated** for an unknown reason,
+I have to figure out why, but for solution 1 this is of no consequences, as the tile corners are the
+same.
+
+Now let's have a look what Problem 2 might be...
+
