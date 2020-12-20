@@ -372,3 +372,18 @@ same.
 
 Now let's have a look what Problem 2 might be...
 
+--
+
+Solution 2 - That was a fun one! A bit of pattern searching in the full image, as created from the 1st
+solution. I was able to capture a rare image of my sea monsters while they felt unobserved:
+
+![Sea Monsters from Day 20](20-sea_monsters.png)
+
+In the end, if solution 1 was correct, that one was not hard:
+
+1. create a full image of the correctly rotated patterns from solution 1 (just "stitch" all the tiles
+   in the correct version together)
+2. search for a pixel pattern, rotate/flip the image if needed (mine was not needed to rotate)
+3. mark, count, done.
+
+
