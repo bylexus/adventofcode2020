@@ -339,3 +339,14 @@ I don't have a solution for now, I have to investigate furter first.
 Works like a charm for part 1. For part 2, I manually replaced the recursive rule with the ... recursive version :-) so I did some recursion-resolving until a certain deepness (just tried it out manually how many are necessary, really).
 
 Man, that one took me almost the whole day...
+
+## Day 20 - Jurassic Jigsaw
+
+This one is the real killer - effort-wise. In the end, it is a backtracking algorithm to find
+the correct arrangement, but with some twists: checking a fit means:
+
+- create rotations / flip versions (8 different versions)
+- check "seams"
+
+This one takes a bit more time, so I do not commit the final version here - this is a work in progress
+for now.
