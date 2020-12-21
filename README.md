@@ -386,4 +386,12 @@ In the end, if solution 1 was correct, that one was not hard:
 2. search for a pixel pattern, rotate/flip the image if needed (mine was not needed to rotate)
 3. mark, count, done.
 
+## Day 21 - Allergen Assessment
+
+This one was similar to day 16 - an elimination problem. But today it took me especially long
+to figure it out - mentally blocked from yesterday, I guess.
+
+Also, the code I produced is really ugly, with all that re-arranging, re-assigning maps/sets etc...
+I don't like it. It works, but I am sure there is a more elegant, more functional approach.
+Maybe I spend some time to clean it up a bit.
 
