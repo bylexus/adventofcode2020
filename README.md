@@ -395,3 +395,21 @@ Also, the code I produced is really ugly, with all that re-arranging, re-assigni
 I don't like it. It works, but I am sure there is a more elegant, more functional approach.
 Maybe I spend some time to clean it up a bit.
 
+
+## Day 22 - Crab Combat
+
+That one was easier as I first anticipated - Problem 1 was piece of cake (really a day 22 problem...?),
+for part two I feared that this leads to impossible many rounds, as I read the instructions wrong:
+
+Instead of using a sub-set of cards, I always used the full (but re-arranged) stack of cards. This lead 
+to an infinite loop-of-death.
+
+So I included a "round memoization": I
+kept the results of each round with its initial card state as key, so that I could look up the round's result
+based on the initial cards, if already played once. Was worth nothing (as practically not one round is the same).
+
+After realizing that I just implemented it wrong, it was simple in the end: no memoization needed at all.
+
+In the end it took only 5 seconds to solve part 2, so no further optimization was needed.
+
+Take-home-advice: **RTFM carefully**
