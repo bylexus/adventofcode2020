@@ -413,3 +413,26 @@ After realizing that I just implemented it wrong, it was simple in the end: no m
 In the end it took only 5 seconds to solve part 2, so no further optimization was needed.
 
 Take-home-advice: **RTFM carefully**
+
+## Day 23 - Crab Cups
+
+This was a nice optimization problem - from a simple list-based ring buffer, which worked fine for solution 1,
+to a linked-list with a hash map for the values:
+
+My approach for solution 1 was pretty simple: just slice, copy, rotate a list (which always get copied in memory). Worked,
+but I already guessed that this might become a problem in the 2nd part.
+
+And so it was:
+
+instead of just looping 100x a very short list, now we had to rotate/slice/insert/remove a 1'000'000 long list,
+10'000'000 times... that just did not scale with my 1st approach.
+
+So I created the following data structures:
+
+1. I built a linked list of all the numbers, with the last linkink back to the first (so creating a ring)
+2. I also created a hash map of values => List Nodes, to fast-find a node for a given value
+
+Then it was just the same logic as in part 1, but this time no copying / slicing / concating of lists, but just
+simple linked list operations and hash map lookups.
+
+Still a bit slow, but works: 25s on my old macbook.
