@@ -436,3 +436,19 @@ Then it was just the same logic as in part 1, but this time no copying / slicing
 simple linked list operations and hash map lookups.
 
 Still a bit slow, but works: 25s on my old macbook.
+
+## Day 24 - Lobby Layout
+
+A hexagonal coordinate walking problem - similar to Day 11 in AoC 2017, but much simpler (I wonder why the problems are much easier
+this year than others?)
+
+Problem 1 was just navigating through a hexagonal grid, and mark/flip a tile on that coordinate. No problem.
+I used a double-width hexagonal coordinate system, described here:
+
+https://www.redblobgames.com/grids/hexagons/#coordinates-doubled
+
+I kept all coordinates as tuples in a dict.
+
+The 2nd problem was an analogy to Day 11 - Seating System, so some kind of mutating a state according to a pattern.
+Simple. As I already got all coordinates from Solution 1, I just had to traverse them, AND the neightbours of the black ones,
+to get all.
