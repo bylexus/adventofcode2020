@@ -449,6 +449,7 @@ https://www.redblobgames.com/grids/hexagons/#coordinates-doubled
 
 I kept all coordinates as tuples in a dict.
 
-The 2nd problem was an analogy to Day 11 - Seating System, so some kind of mutating a state according to a pattern.
+The 2nd problem was an analogy to Day 11 - Seating System, so some kind of mutating a state according to a pattern, a variant of Conway's game of life.
+
 Simple. As I already got all coordinates from Solution 1, I just had to traverse them, AND the neightbours of the black ones,
 to get all.
